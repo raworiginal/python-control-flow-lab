@@ -19,7 +19,7 @@ def print_greeting():
 
 
 # Call the function
-print_greeting()
+# print_greeting()
 
 # Exercise 1: Vowel or Consonant
 #
@@ -56,7 +56,7 @@ def check_letter():
 
 
 # Call the function
-check_letter()
+# check_letter()
 
 # Exercise 2: Old enough to vote?
 #
@@ -95,7 +95,7 @@ def check_voting_eligibility():
 
 
 # Call the function
-check_voting_eligibility()
+# check_voting_eligibility()
 
 # Exercise 3: Calculate Dog Years
 #
@@ -137,4 +137,51 @@ def calculate_dog_years():
 
 
 # Call the function
-calculate_dog_years()
+# calculate_dog_years()
+
+# Exercise 4: Weather Advice
+#
+# Write a Python script named `weather_advice` that provides clothing advice based on weather conditions.
+#
+# Requirements:
+# - The script should prompt the user to enter if it is cold (yes/no).
+# - Then, ask if it is raining (yes/no).
+# - Use logical operators to determine clothing advice:
+#   - If it is cold AND raining, print "Wear a waterproof coat."
+#   - If it is cold BUT NOT raining, print "Wear a warm coat."
+#   - If it is NOT cold but raining, print "Carry an umbrella."
+#   - If it is NOT cold AND NOT raining, print "Wear light clothing."
+#
+# Hints:
+# - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
+
+
+def weather_advice():
+  questions = ["Is it cold outside?\n", "Is it raining?\n"]
+  answers = []
+
+  for question in questions:
+
+    while True:
+      answer = input(question).strip().lower()
+      if answer[0] in {"y", "n"}:
+        answer = True if answer[0] == "y" else False
+        print()
+        break
+      else:
+        print("You must enter yes or no (y/n). Try again\n")
+        continue
+    answers.append(answer)
+
+  is_cold, is_raining = answers
+  if is_cold and is_raining:
+    print("Wear a waterproof coat.")
+  elif is_cold and not (is_raining):
+    print("Wear a warm coat.")
+  elif is_raining:
+    print("Carry an umbrella")
+  else:
+    print("Wear light clothing")
+
+  # Call the function
+weather_advice()
