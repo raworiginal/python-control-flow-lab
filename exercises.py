@@ -56,7 +56,7 @@ def check_letter():
 
 
 # Call the function
-# check_letter()
+check_letter()
 
 # Exercise 2: Old enough to vote?
 #
@@ -79,13 +79,13 @@ def check_voting_eligibility():
   legal_age = 18
   while True:
     try:
-      age = int(input("Please enter you age:"))
+      age = int(input("Please enter you age: "))
     except ValueError:
-      print("You must enter a number for your age. Try again. ")
+      print("You must enter a number for your age. Try again.")
       continue
 
     if age < 0:
-      print("Your age cannot be a negative age, Benjamin Button. Try again ")
+      print("Your age cannot be a negative, Benjamin Button. Try again.")
       continue
     elif age < legal_age:
       print("You are not old enough to vote.")
@@ -95,7 +95,7 @@ def check_voting_eligibility():
 
 
 # Call the function
-# check_voting_eligibility()
+check_voting_eligibility()
 
 # Exercise 3: Calculate Dog Years
 #
@@ -133,12 +133,12 @@ def calculate_dog_years():
       dog_age *= 10
     else:
       dog_age = 20 + (dog_age - 2) * 7
-    print(f"Your dog's age in dog in dog years is {dog_age} ")
+    print(f"Your dog's age in dog in dog years is {dog_age}.")
     break
 
 
 # Call the function
-# calculate_dog_years()
+calculate_dog_years()
 
 # Exercise 4: Weather Advice
 #
@@ -156,8 +156,9 @@ def calculate_dog_years():
 # Hints:
 # - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
 
+
 def weather_advice():
-  questions = ["Is it cold outside?", "Is it raining?"]
+  questions = ["Is it cold outside? ", "Is it raining? "]
   answers = []
 
   for question in questions:
@@ -166,7 +167,6 @@ def weather_advice():
       answer = input(question).strip().lower()
       if answer in {"yes", "no"}:
         answer = True if answer == "yes" else False
-        print()
         break
       else:
         print("You must enter yes or no. Try again")
@@ -182,7 +182,6 @@ def weather_advice():
     print("Carry an umbrella.")
   else:
     print("Wear light clothing.")
-
 
   # Call the function
 weather_advice()
@@ -217,17 +216,14 @@ def determine_season():
       break
     else:
       print("Please enter a valid month. Try again.")
-      continue
 
   while True:
     try:
-      entered_day = int(input("Please enter the day of the month:"))
+      entered_day = int(input("Please enter the day of the month: "))
       if entered_day <= 0:
         print("Please enter a number greater than 0. Try again")
-        continue
       elif entered_month == "Feb" and entered_day > 28:
         print("Feb only has 28 days, please try again.")
-        continue
       elif entered_month in ["Jan", "Mar", "May", "Jul", "Aug", "Oct", "Dec"] and entered_day > 31:
         print(f"Please enter a valid day for {entered_month}. Try again.")
       elif entered_day > 30:
@@ -236,7 +232,6 @@ def determine_season():
         break
     except ValueError:
       print("You must enter a valid number for the day.")
-      continue
 
   if entered_month in ["Jan", "Feb"] or (entered_month == "Dec" and entered_day >= 21) or (entered_month == "Mar" and entered_day <= 19):
     season = 'Winter'
@@ -248,7 +243,6 @@ def determine_season():
     season = "Fall"
 
   print(f"{entered_month} {entered_day} is in {season}.")
-
 
   # Call the function
 determine_season()
