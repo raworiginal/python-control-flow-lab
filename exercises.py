@@ -155,7 +155,6 @@ def calculate_dog_years():
 # Hints:
 # - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
 
-
 def weather_advice():
   questions = ["Is it cold outside?\n", "Is it raining?\n"]
   answers = []
@@ -185,3 +184,115 @@ def weather_advice():
 
   # Call the function
 weather_advice()
+
+# Exercise 5: What's the Season?
+#
+# Write a Python function named `determine_season` that figures out the season based on the entered date.
+#
+# Requirements:
+# - The function should first prompt the user to enter the month (as three characters): "Enter the month of the year (Jan - Dec):"
+# - Then, the function should prompt the user to enter the day of the month: "Enter the day of the month:"
+# - Determine the current season based on the date:
+#      - Dec 21 - Mar 19: Winter
+#      - Mar 20 - Jun 20: Spring
+#      - Jun 21 - Sep 21: Summer
+#      - Sep 22 - Dec 20: Fall
+# - Print the season for the entered date in the format: "<Mmm> <dd> is in <season>."
+#
+# Hints:
+# - Use 'in' to check if a string is in a list or tuple.
+# - Adjust the season based on the day of the month when needed.
+# - Ensure to validate input formats and handle unexpected inputs gracefully.
+
+
+def determine_season():
+  months = ["Jan", "Feb", "Mar", "Apr", "May",
+            "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  while True:
+    entered_month = input(
+        "Place enter a month (Jan - Dec): ").title()[:3]
+    if entered_month in months:
+      break
+    else:
+      print("Please enter a valid month. Try again.")
+      continue
+
+  while True:
+    try:
+      entered_day = int(input("Please enter the day of the month:\n"))
+      if entered_day <= 0:
+        print("Please enter a number greater than 0. Try again")
+        continue
+      elif entered_month == "Feb" and entered_day > 29:
+        print("Feb only has 28 days, please try again.")
+        continue
+      elif entered_month in ["Jan", "March", "May", "Jul", "Aug", "Oct", "Dec"] and entered_day > 31:
+        print(f"Please enter a valid day for {entered_month}. Try again.")
+      elif entered_day > 30:
+        print(f"Please enter a valid day for {entered_month}. Try Again.")
+      else:
+        break
+    except ValueError:
+      print("You must enter a valid number for the day.")
+      continue
+
+  if entered_month in ["Jan", "Feb"] or (entered_month == "Dec" and entered_day >= 21) or (entered_month == "Mar" and entered_day <= 19):
+    season = 'Winter'
+  elif entered_month in ["Apr", "May"] or (entered_month == "Mar" and entered_day >= 20) or (entered_month == "Jun" and entered_day <= 20):
+    season = "Spring"
+  elif entered_month in ["Jul", "Aug"] or (entered_month == "Jun" and entered_day >= 21) or (entered_month == "Sep" and entered_day <= 21):
+    season = "Summer"
+  else:
+    season = "Fall"
+
+  print(f"{entered_month} {entered_day} is in {season}.")
+
+  # Call the function
+determine_season()
+
+# Exercise 6: Number Guessing Game
+#
+# Write a Python function named `guess_number` that allows a user to guess a predetermined number within a range.
+#
+# Requirements:
+# - Set a fixed number as the target for guessing (e.g., 42).
+# - Prompt the user to guess a number within a range (e.g., 1 to 100).
+# - Allow the user to guess up to five times.
+# - After each guess, use conditional statements with AND, OR, and NOT to give the user hints like:
+#   - "Guess is too low" or "Guess is too high."
+#   - "Last chance!" when they are on their fifth guess.
+# - Print "Congratulations, you guessed correctly!" if they guess the number.
+# - Print "Sorry, you failed to guess the number in five attempts." if they do not succeed.
+#
+# Hints:
+# - Use a for loop with a range to limit guesses to five.
+# - Use logical AND, OR, and NOT to check conditions and provide appropriate feedback.
+
+
+def guess_number():
+  # Your control flow logic goes here
+  secret_number = 42
+  guesses = 5
+  for i in range(5):
+    while True:
+      try:
+        guessed_number = int(input("Please enter a number between 1 and 100"))
+        if guessed_number < 1 or guessed_number > 100:
+          print(f"{guessed_number} is not between 1 and 100. Try again.")
+          continue
+        else:
+          break
+      except ValueError:
+        print("Please enter a valid whole number. Try Again.")
+
+    if guessed_number > secret_number:
+      print(f"Too high. Try again. You have {guesses - 1} remaining.")
+    elif guessed_number < secret_number:
+      print(f"Too low. Try again. You have {guesses - 1} remaining.")
+    else:
+      print(f"You guessed correctly!")
+      break
+
+
+# Call the function
+guess_number()
